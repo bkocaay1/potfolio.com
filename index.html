@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio de Bekir KOCAAY : projets électroniques et développement web">
+  <title>Mon Portfolio | Bekir KOCAAY</title>
+
+  <style>
+    :root {
+      --orange: #ff792f;
+      --orange-light: #fff0e5;
+      --dark: #111827;
+      --gray: #64748b;
+      --background: #f8fafc;
+      --white: #ffffff;
+      --border: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+      scroll-margin-top: 80px;
+    }
+
+    .section-head {
+      max-width: 650px;
+      margin-bottom: 45px;
+    }
+
+    .kicker {
+      color: var(--orange);
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: .85rem;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 10px 0;
+      line-height: 1.2;
+    }
+
+    .section-head p,
+    .muted {
+      color: var(--gray);
+    }
+
+    /* NAVIGATION */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 75px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+    }
+
+    .logo span,
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .95rem;
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-links .contact-link {
+      background: var(--orange);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    .nav-links .contact-link:hover {
+      background: #e96520;
+      color: white;
+    }
+
+    /* ACCUEIL */
+    .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      padding: 90px 0;
+      background:
+        radial-gradient(circle at 85% 25%, #ffeadb 0, transparent 28%),
+        var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-label {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: var(--orange-light);
+      color: #d95712;
+      font-size: .9rem;
+      font-weight: bold;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero-description {
+      color: var(--gray);
+      font-size: 1.1rem;
+      max-width: 570px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 2px solid var(--orange);
+      background: var(--orange);
+      color: white;
+      padding: 13px 22px;
+      border-radius: 9px;
+      font-weight: bold;
+      transition: .2s;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .btn:hover {
+      background: #e96520;
+      border-color: #e96520;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--dark);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      color: var(--orange);
+      background: var(--orange-light);
+      border-color: var(--orange);
+    }
+
+    .hero-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 20px 60px rgba(15,23,42,.07);
+      transform: rotate(2deg);
+    }
+
+    .code-window {
+      background: #111827;
+      color: #e2e8f0;
+      border-radius: 15px;
+      padding: 22px;
+      overflow: hidden;
+      font-family: Consolas, monospace;
+      font-size: .9rem;
+    }
+
+    .window-dots {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 25px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--orange);
+    }
+
+    .code-line {
+      margin: 12px 0;
+      overflow-wrap: anywhere;
+    }
+
+    .code-orange {
+      color: #ff9b64;
+    }
+
+    .code-green {
+      color: #a7f3d0;
+    }
+
+    .hero-card-caption {
+      color: var(--gray);
+      text-align: center;
+      margin-top: 22px;
+      font-weight: bold;
+    }
+
+    /* COMPÉTENCES */
+    .skills {
+      background: #f8fafc;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .skill-card,
+    .project-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .skill-card {
+      padding: 28px;
+    }
+
+    .skill-card:hover,
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(15,23,42,.07);
+    }
+
+    .skill-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .skill-title h3 {
+      font-size: 1.35rem;
+    }
+
+    .skill-title strong {
+      color: var(--orange);
+      font-size: 1.1rem;
+    }
+
+    .skill-card p {
+      color: var(--gray);
+      min-height: 48px;
+    }
+
+    .skill-level {
+      height: 7px;
+      background: #e5e7eb;
+      border-radius: 99px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .skill-level span {
+      display: block;
+      height: 100%;
+      background: var(--orange);
+      border-radius: inherit;
+    }
+
+    /* PROJETS */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      overflow: hidden;
+    }
+
+    .project-visual {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      background: var(--orange-light);
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .3s ease;
+    }
+
+    .project-card:hover .project-visual img {
+      transform: scale(1.05);
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: var(--gray);
+      margin-bottom: 18px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #475569;
+      border-radius: 6px;
+      padding: 5px 9px;
+      font-size: .8rem;
+      font-weight: bold;
+    }
+
+    .project-link {
+      color: var(--orange);
+      font-weight: bold;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #fff7f1;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 55px;
+      align-items: start;
+    }
+
+    .contact-info p {
+      color: var(--gray);
+      margin: 15px 0 25px;
+    }
+
+    .contact-note {
+      background: white;
+      border: 1px solid #ffdfca;
+      border-radius: 12px;
+      padding: 18px;
+      color: #85421f;
+    }
+
+    .contact-form {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font: inherit;
+      color: var(--dark);
+      background: white;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: 2px solid #ffbd96;
+      border-color: var(--orange);
+    }
+
+    .form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-form .btn {
+      width: 100%;
+    }
+
+    .form-help {
+      font-size: .85rem;
+      color: var(--gray);
+      margin-top: 12px;
+    }
+
+    /* PIED DE PAGE */
+    footer {
+      background: white;
+      border-top: 1px solid var(--border);
+      padding: 25px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      color: var(--gray);
+      font-size: .9rem;
+    }
+
+    .back-top {
+      color: var(--orange);
+      font-weight: bold;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 800px) {
+      .hero-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-card {
+        max-width: 500px;
+        transform: none;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 0;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: .82rem;
+      }
+
+      .nav-links .contact-link {
+        padding: 6px 9px;
+      }
+
+      .section {
+        padding: 70px 0;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
+      .skill-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-card {
+        padding: 22px;
+      }
+
+      .contact-form {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <header>
+    <nav class="container" aria-label="Navigation principale">
+      <a href="#accueil" class="logo">Mon<span>Portfolio.</span></a>
+
+      <ul class="nav-links">
+        <li><a href="#accueil">Accueil</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#contact" class="contact-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ACCUEIL -->
+    <section class="hero" id="accueil">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="hero-label">Portfolio 2026–2027</span>
+
+          <h1>
+            Bonjour, je suis<br>
+            <span>Bekir KOCAAY</span>
+          </h1>
+
+          <p class="hero-description">
+            Bienvenue sur mon portfolio ! Je découvre et développe mes compétences
+            en création de sites web. J'aime apprendre, imaginer des interfaces
+            et donner vie à mes idées grâce au code.
+          </p>
+
+          <div class="buttons">
+            <a href="#projets" class="btn">Découvrir mes projets</a>
+            <a href="#contact" class="btn btn-outline">Me contacter</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="code-window">
+            <div class="window-dots">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+
+            <div class="code-line">
+              <span class="code-orange">&lt;h1&gt;</span>
+            </div>
+            <div class="code-line">Bienvenue !</div>
+            <div class="code-line">
+              <span class="code-orange">&lt;/h1&gt;</span>
+            </div>
+            <br>
+            <div class="code-line">
+              <span class="code-green">const</span> passion =
+            </div>
+            <div class="code-line">
+              <span class="code-orange">"développement web"</span>;
+            </div>
+            <br>
+            <div class="code-line">
+              <span class="code-green">// Créons quelque chose</span>
+            </div>
+            <div class="code-line">
+              <span class="code-green">// de formidable !</span>
+            </div>
+          </div>
+
+          <p class="hero-card-caption">Créativité · Code · Projets</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section class="section skills" id="competences">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="kicker">Mon apprentissage</span>
+          <h2>Mes compétences</h2>
+          <p>
+            Voici les langages que j'apprends et que j'utilise
+            pour créer mes projets web.
+          </p>
+        </div>
+
+        <div class="skill-grid">
+
+          <article class="skill-card">
+            <div class="skill-title">
+              <h3>HTML</h3>
+              <strong>75%</strong>
+            </div>
+            <p>Création de structures propres, organisées et accessibles.</p>
+            <div class="skill-level" role="progressbar" aria-label="HTML"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
+              <span style="width:75%"></span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">
+              <h3>CSS</h3>
+              <strong>70%</strong>
+            </div>
+            <p>Création d'interfaces modernes, responsives et esthétiques.</p>
+            <div class="skill-level" role="progressbar" aria-label="CSS"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+              <span style="width:70%"></span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">
+              <h3>JavaScript</h3>
+              <strong>20%</strong>
+            </div>
+            <p>Ajout d'interactions et de fonctionnalités dynamiques.</p>
+            <div class="skill-level" role="progressbar" aria-label="JavaScript"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="20">
+              <span style="width:20%"></span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-title">
+              <h3>Python</h3>
+              <strong>65%</strong>
+            </div>
+            <p>Développement de programmes et découverte de l'automatisation.</p>
+            <div class="skill-level" role="progressbar" aria-label="Python"
+                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="65">
+              <span style="width:65%"></span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section class="section" id="projets">
+      <div class="container">
+
+        <div class="section-head">
+          <span class="kicker">Mes réalisations</span>
+          <h2>Mes projets</h2>
+          <p>
+            Découvrez mes projets électroniques et informatiques
+            réalisés dans le cadre de mon apprentissage.
+          </p>
+        </div>
+
+        <div class="project-grid">
+
+          <!-- PROJET 1 -->
+          <article class="project-card">
+            <div class="project-visual">
+              <img src="projet-1.png"
+                   alt="Carte électronique connectée avec écran OLED"
+                   loading="lazy">
+            </div>
+
+            <div class="project-content">
+              <h3>Balise GPS connectée</h3>
+              <p>
+                Développement d'un système embarqué permettant de récupérer
+                des données, de les transmettre et de les afficher sur un
+                écran ou une interface.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Électronique</span>
+                <span class="tag">IoT</span>
+                <span class="tag">Microcontrôleur</span>
+              </div>
+
+              <a class="project-link" href="#contact">
+                En savoir plus →
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJET 2 -->
+          <article class="project-card">
+            <div class="project-visual">
+              <img src="projet-2.png"
+                   alt="Montage électronique avec écran affichant des mesures"
+                   loading="lazy">
+            </div>
+
+            <div class="project-content">
+              <h3>Station de mesure connectée</h3>
+              <p>
+                Réalisation d'un système électronique avec capteurs et écran
+                permettant de mesurer et d'afficher des données en temps réel.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Capteurs</span>
+                <span class="tag">Arduino</span>
+                <span class="tag">Affichage</span>
+              </div>
+
+              <a class="project-link" href="#contact">
+                En savoir plus →
+              </a>
+            </div>
+          </article>
+
+          <!-- PROJET 3 -->
+          <article class="project-card">
+            <div class="project-visual">
+              <img src="projet-3.png"
+                   alt="Montage électronique avec écran LCD et commande depuis un téléphone"
+                   loading="lazy">
+            </div>
+
+            <div class="project-content">
+              <h3>Système électronique piloté par smartphone</h3>
+              <p>
+                Conception d'un montage électronique associé à une interface
+                de commande sur téléphone pour piloter différents éléments
+                du système.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Électronique</span>
+                <span class="tag">Smartphone</span>
+                <span class="tag">Interface</span>
+              </div>
+
+              <a class="project-link" href="#contact">
+                En savoir plus →
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT AVEC FORMSPREE -->
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+          <span class="kicker">Restons en contact</span>
+          <h2>Parlons de ton projet !</h2>
+
+          <p>
+            Tu souhaites en savoir plus sur mon travail ou échanger
+            au sujet d'un projet ? Envoie-moi un message.
+          </p>
+
+          <div class="contact-note">
+            <strong>Envoi direct par e-mail</strong>
+            <p>
+              Remplis le formulaire ci-contre pour envoyer ton message.
+              Les messages sont transmis via Formspree.
+            </p>
+          </div>
+        </div>
+
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://formspree.io/f/xzedvwnp"
+          method="POST">
+
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nouveau message depuis le portfolio de Bekir KOCAAY">
+
+          <div class="form-group">
+            <label for="name">Ton nom</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Ex. Alex"
+              autocomplete="name"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Ton adresse e-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="alex@exemple.fr"
+              autocomplete="email"
+              required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Ton message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Écris ton message ici..."
+              required></textarea>
+          </div>
+
+          <button class="btn" type="submit">
+            Envoyer le message →
+          </button>
+
+          <p class="form-help">
+            Ton message sera envoyé via Formspree. Vérifie que ton formulaire
+            est activé et que ton adresse e-mail de réception est confirmée.
+          </p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PIED DE PAGE -->
+  <footer>
+    <div class="container footer-content">
+      <p>
+        © <span id="year"></span> Mon Portfolio. Réalisé avec passion.
+      </p>
+      <a href="#accueil" class="back-top">Retour en haut ↑</a>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Affiche automatiquement l'année actuelle.
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
